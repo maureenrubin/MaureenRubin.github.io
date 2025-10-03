@@ -1,9 +1,9 @@
 :root{
   --bg:#0b0b0b;
-  --panel:#0f0f10;
-  --muted:#9aa0a6;
-  --accent:#f3b400;
-  --card-border: rgba(255,255,255,0.04);
+  --panel:#5E0D68;
+  --muted:rgb(190, 183, 190);
+  --accent:rgba(208, 135, 223, 0.932);
+  --card-border: rgba(89,22,139, 0.568);
   --radius:12px;
   --max:1200px;
   --gap:20px;
@@ -13,7 +13,7 @@
 html,body{height:100%}
 body{
   margin:0;
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+  font-family: "Poppins", "Inter", "Segoe UI", sans-serif;
   background:var(--bg);
   color: white;
   -webkit-font-smoothing:antialiased;
@@ -26,7 +26,7 @@ body{
   position: absolute;
   top: -40px;
   left: 6px;
-  background: #f3b400;
+  background: #C81CDE;
   color: black;
   padding: 8px;
   text-decoration: none;
@@ -78,7 +78,7 @@ body{
   transition:color .18s;
   font-size: clamp(14px, 2.5vw, 16px);
 }
-.nav a:hover{color:#fff}
+.nav a:hover{color:#e617e6}
 .menu-btn{
   display:none;
   background:transparent;
@@ -91,7 +91,7 @@ body{
 
 .profile-hero {
   background: linear-gradient(135deg, #1a1a1a 0%, #111111 100%);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid  rgba(89,22,139, 0.568);
   border-radius: 20px;
   padding: clamp(24px, 5vw, 40px);
   margin: clamp(20px, 5vw, 36px) 0;
@@ -106,7 +106,7 @@ body{
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(243,180,0,0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(241, 106, 253, 0.959), transparent);
 }
 
 .profile-content {
@@ -193,6 +193,7 @@ body{
 }
 
 .contact-links {
+  font-style: normal;
   display: flex;
   gap: 10px;
 }
@@ -203,9 +204,9 @@ body{
   justify-content: center;
   width: 85px;
   height: 30px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 10px;
+  background: rgba(158, 10, 138, 0.05);
+  border: 1px solid rgba(201, 87, 195, 0.1);
+  border-radius: 6px;
   color: var(--muted);
   text-decoration: none;
   font-size: 18px;
@@ -213,13 +214,13 @@ body{
 }
 
 .contact-link:hover {
-  background: rgba(255,255,255,0.1);
+  background:  rgba(201, 87, 195, 0.733);
   color: white;
   transform: translateY(-2px);
 }
 
 .status-badge {
-  background: linear-gradient(90deg, #10b981, #059669);
+  background: linear-gradient(90deg, #05961d, #05961d);
   color: white;
   padding: 6px 12px;
   border-radius: 20px;
@@ -311,8 +312,8 @@ body{
 }
 
 .tech-item:hover{
-  background: rgba(243,180,0,0.1);
-  border-color: rgba(243,180,0,0.3);
+  background: rgba(117, 27, 90, 0.1);
+  border-color:  rgba(201, 87, 195, 0.37);
   color: var(--accent);
   transform: translateY(-1px);
 }
@@ -387,7 +388,7 @@ body{
 
 .contact-info {
   background: #1a1a1a;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(89,22,139, 0.568);
   border-radius: 16px;
   padding: 20px;
   margin-bottom: 16px;
@@ -407,7 +408,7 @@ body{
   padding: 10px 12px;
   background: #0f0f0f;
   border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(172, 111, 219, 0.932);
   margin-bottom: 12px;
 }
 
@@ -423,7 +424,7 @@ body{
   gap: 8px;
   padding: 10px 16px;
   background: #0f0f0f;
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(89,22,139, 0.568);
   border-radius: 8px;
   color: white;
   text-decoration: none;
@@ -435,11 +436,11 @@ body{
 
 .social-link:hover {
   background: #262626;
-  border-color: rgba(255,255,255,0.12);
+  border-color: rgba(201, 87, 195, 0.37);
 }
 
 .site-footer{
-  border-top:1px solid rgba(255,255,255,0.03);
+  border-top:1px solid rgba(89,22,139, 0.568);
   padding:clamp(20px, 4vw, 24px) 0;
   color:var(--muted);
   background:transparent;
@@ -459,6 +460,7 @@ body{
   font-size: 14px;
 }
 
+
 @media (max-width: 768px) {
   .profile-hero {
     padding: clamp(20px, 4vw, 24px);
@@ -472,9 +474,10 @@ body{
   }
 
   .profile-image {
-    width: clamp(70px, 12vw, 100px);
-    height: clamp(70px, 12vw, 100px);
-  }
+  width: clamp(90px, 18vw, 140px);
+  height: clamp(90px, 18vw, 140px);
+}
+
 
   .profile-info {
     overflow: hidden;
