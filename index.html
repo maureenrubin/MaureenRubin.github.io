@@ -1,330 +1,303 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Maureen Rubin - .NET Software Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Maureen Rubin — Software eveloper</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <a class="skip" href="#content">Skip to content</a>
 
-    <header class="site-header">
-        <div class="wrap header-inner">
-            <div class="brand">
-                <i class="fas fa-code"></i>
-                Maureen Rubin
+  <canvas id="grain" aria-hidden="true"></canvas>
+
+  <!-- NAV -->
+  <header class="nav-bar" id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-first">Maureen</span>
+        <span class="logo-last">Rubin</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#projects">Work</a>
+        <a href="#certificates">Certs</a>
+        <a href="#stack">Stack</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile overlay -->
+  <div class="mob-overlay" id="mobOverlay">
+    <div class="mob-links">
+      <a href="#about">About</a>
+      <a href="#projects">Work</a>
+      <a href="#certificates">Certs</a>
+      <a href="#stack">Stack</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="mob-socials">
+      <a href="https://github.com/maureenrubin" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/maureen-rubin-b35a3a31a/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.upwork.com/freelancers/~01a54ce93ec2fdb005" target="_blank"><i class="fas fa-briefcase"></i></a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-lines" aria-hidden="true">
+        <div class="hl"></div><div class="hl"></div><div class="hl"></div>
+        <div class="hl"></div><div class="hl"></div><div class="hl"></div>
+      </div>
+
+      <div class="hero-left">
+        <div class="hero-eyebrow">
+          <span class="live-dot"></span> Available for work — Philippines
+        </div>
+        <h1 class="hero-name">
+          <span class="name-maureen">MAUREEN</span>
+          <span class="name-rubin-row">
+            <span class="name-rubin">RUBIN</span>
+            <span class="name-tag"><i class="fas fa-terminal"></i> .NET Software Dev</span>
+          </span>
+        </h1>
+        <p class="hero-sub">C# · ASP.NET Core · Blazor · Clean Architecture.<br>Building things that actually work.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-main">See My Work <i class="fas fa-arrow-right"></i></a>
+          <a href="#contact" class="btn-out">Get In Touch</a>
+        </div>
+        <div class="hero-socials">
+          <a href="https://github.com/maureenrubin" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/maureen-rubin-b35a3a31a/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.upwork.com/freelancers/~01a54ce93ec2fdb005" target="_blank"><i class="fas fa-briefcase"></i></a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="photo-wrap">
+          <div class="photo-ring"></div>
+          <img src="https://github.com/maureenrubin.png" alt="Maureen Rubin" class="hero-photo">
+          <div class="photo-chip"><i class="fas fa-check"></i> Verified Dev</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-box">
+            <span class="snum" data-target="2">0</span><span class="ssym">+</span>
+            <span class="slbl">Years Exp.</span>
+          </div>
+          <div class="stat-box">
+            <span class="snum" data-target="15">0</span><span class="ssym">+</span>
+            <span class="slbl">Projects</span>
+          </div>
+          <div class="stat-box">
+            <span class="snum" data-target="2">0</span>
+            <span class="slbl">Certificates</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-hint" aria-label="scroll">
+        <span>Scroll</span>
+        <div class="sh-line"></div>
+      </a>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="sec" id="about">
+      <div class="wrap">
+        <div class="sec-eyebrow reveal">01 · About Me</div>
+        <div class="about-grid">
+          <div class="about-left reveal">
+            <h2 class="display-title">Building the web,<br><em>one commit</em><br>at a time.</h2>
+          </div>
+          <div class="about-right">
+            <p class="reveal">Experienced developer with deep expertise in <strong>C#, ASP.NET Core, Blazor</strong>, and modern .NET practices. I build scalable, maintainable applications using Clean Architecture and SOLID principles.</p>
+            <p class="reveal">Currently exploring <strong>Angular</strong> and passionate about creating intuitive user experiences. Based in <strong>Central Luzon, Philippines</strong> — available for remote collaboration worldwide.</p>
+            <div class="skills reveal">
+              <div class="sk-row"><label>C# / .NET</label><div class="sk-bar"><div class="sk-fill" style="--p:95"></div></div><span>90%</span></div>
+              <div class="sk-row"><label>ASP.NET Core / Blazor</label><div class="sk-bar"><div class="sk-fill" style="--p:90"></div></div><span>90%</span></div>
+              <div class="sk-row"><label>SQL Server / EF Core</label><div class="sk-bar"><div class="sk-fill" style="--p:85"></div></div><span>85%</span></div>
+              <div class="sk-row"><label>Clean Architecture</label><div class="sk-bar"><div class="sk-fill" style="--p:88"></div></div><span>80%</span></div>
+              <div class="sk-row"><label>HTML / CSS </label><div class="sk-bar"><div class="sk-fill" style="--p:80"></div></div><span>95%</span></div>
             </div>
-            <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation menu">
-                <i class="fas fa-bars"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="sec sec-dark" id="projects">
+      <div class="wrap">
+        <div class="sec-top">
+          <div class="sec-eyebrow reveal">02 · Work</div>
+          <div class="sec-top-row reveal">
+            <h2 class="display-title">Featured<br><em>Projects.</em></h2>
+            <a href="https://github.com/maureenrubin" target="_blank" class="gh-link"><i class="fab fa-github"></i> All Repos</a>
+          </div>
+        </div>
+
+        <div class="work-list">
+          <article class="work-row reveal">
+            <div class="wr-num">01</div>
+            <div class="wr-icon" style="--c:#7c3aed"><i class="fas fa-vote-yea"></i></div>
+            <div class="wr-body">
+              <div class="wr-tags"><span>ASP.NET Core</span><span>Blazor</span><span>SQL Server</span></div>
+              <h3>Students' Organization Election &amp; Events</h3>
+              <p>Digital voting platform for university student elections with event management and campus engagement.</p>
+            </div>
+            <a href="https://www.linkedin.com/in/maureen-rubin-b35a3a31a/" target="_blank" class="wr-link"><i class="fas fa-arrow-up-right-from-square"></i></a>
+          </article>
+
+          <article class="work-row reveal">
+            <div class="wr-num">02</div>
+            <div class="wr-icon" style="--c:#0369a1"><i class="fas fa-taxi"></i></div>
+            <div class="wr-body">
+              <div class="wr-tags"><span>C#</span><span>ASP.NET Core</span><span>MSSQL</span></div>
+              <h3>Tricycle Fare Management System</h3>
+              <p>Web system for managing passengers, trips and drivers with stats dashboard and map integration. <em>Associate Developer.</em></p>
+            </div>
+            <a href="https://www.linkedin.com/in/maureen-rubin-b35a3a31a/" target="_blank" class="wr-link"><i class="fas fa-arrow-up-right-from-square"></i></a>
+          </article>
+
+          <article class="work-row reveal">
+            <div class="wr-num">03</div>
+            <div class="wr-icon" style="--c:#15803d"><i class="fas fa-book-open"></i></div>
+            <div class="wr-body">
+              <div class="wr-tags"><span>C#</span><span>WinForms</span><span>SQL Server</span></div>
+              <h3>University Library Management System</h3>
+              <p>Desktop app for book cataloging, borrowing/returns tracking, and inventory management.</p>
+            </div>
+            <a href="https://github.com/maureenrubin/Univ-Library-Management-System" target="_blank" class="wr-link"><i class="fas fa-arrow-up-right-from-square"></i></a>
+          </article>
+
+          <article class="work-row reveal">
+            <div class="wr-num">04</div>
+            <div class="wr-icon" style="--c:#b45309"><i class="fas fa-cash-register"></i></div>
+            <div class="wr-body">
+              <div class="wr-tags"><span>C#</span><span>WinForms</span><span>SQL Server</span></div>
+              <h3>Store Point of Sale Management</h3>
+              <p>Complete desktop POS system for managing sales, inventory, and customer transactions.</p>
+            </div>
+            <a href="https://github.com/maureenrubin/STORE-POS-Management-System" target="_blank" class="wr-link"><i class="fas fa-arrow-up-right-from-square"></i></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATES -->
+    <section class="sec" id="certificates">
+      <div class="wrap">
+        <div class="sec-eyebrow reveal">03 · Credentials</div>
+        <h2 class="display-title reveal">Certificates.</h2>
+        <div class="certs-grid">
+          <article class="cert-card reveal">
+            <div class="cert-thumb">
+              <img src="images/freecodeCamp.png" alt="freeCodeCamp Foundational C#" loading="lazy">
+              <div class="cert-over"><i class="fas fa-eye"></i></div>
+            </div>
+            <div class="cert-body">
+              <div class="cert-from"><i class="fas fa-award"></i> freeCodeCamp × Microsoft</div>
+              <h3>Foundational C# with Microsoft</h3>
+              <span class="cert-date">Issued at January 2025</span>
+              <a href="https://www.freecodecamp.org/certification/fcc16791d9a-fbef-4a8b-9b1f-3ebd2a5942cf/foundational-c-sharp-with-microsoft"
+                 target="_blank" class="cert-verify">Verify Certificate <i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </article>
+
+          <article class="cert-card reveal">
+            <div class="cert-thumb">
+              <img src="images/hackerrank.png" alt="HackerRank Problem Solving" loading="lazy">
+              <div class="cert-over"><i class="fas fa-eye"></i></div>
+            </div>
+            <div class="cert-body">
+              <div class="cert-from"><i class="fas fa-code"></i> HackerRank</div>
+              <h3>Problem Solving (Basic)</h3>
+              <span class="cert-date">Issued at May 2025</span>
+              <a href="https://www.hackerrank.com/certificates/363640ac08d3"
+                 target="_blank" class="cert-verify">Verify Certificate <i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- STACK -->
+    <section class="sec sec-dark" id="stack">
+      <div class="wrap">
+        <div class="sec-eyebrow reveal">04 · Stack</div>
+        <h2 class="display-title reveal">Tools &amp;<br><em>Technologies.</em></h2>
+        <div class="tech-grid">
+          <div class="tc primary reveal"><div class="tc-i"><i class="fab fa-microsoft"></i></div><span>C#</span></div>
+          <div class="tc primary reveal"><div class="tc-i"><i class="fas fa-globe"></i></div><span>ASP.NET Core</span></div>
+          <div class="tc primary reveal"><div class="tc-i"><i class="fas fa-magic"></i></div><span>Blazor</span></div>
+          <div class="tc reveal"><div class="tc-i"><i class="fas fa-database"></i></div><span>SQL Server</span></div>
+          <div class="tc reveal"><div class="tc-i"><i class="fas fa-cubes"></i></div><span>EF Core</span></div>
+          <div class="tc reveal"><div class="tc-i"><i class="fas fa-layer-group"></i></div><span>Clean Arch</span></div>
+          <div class="tc reveal"><div class="tc-i"><i class="fas fa-exchange-alt"></i></div><span>MVC</span></div>
+          <div class="tc reveal"><div class="tc-i"><i class="fas fa-project-diagram"></i></div><span>CQRS</span></div>
+          <div class="tc reveal"><div class="tc-i"><i class="fas fa-code-branch"></i></div><span>Git</span></div>
+          <div class="tc reveal"><div class="tc-i"><i class="fab fa-html5"></i></div><span>HTML / CSS</span></div>
+          <div class="tc reveal"><div class="tc-i"><i class="fab fa-bootstrap"></i></div><span>Bootstrap</span></div>
+          <div class="tc learning reveal"><div class="tc-i"><i class="fab fa-angular"></i></div><span>Angular<em>learning</em></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="sec contact-sec" id="contact">
+      <div class="wrap">
+        <div class="sec-eyebrow reveal">05 · Contact</div>
+        <div class="contact-layout">
+          <div class="contact-left reveal">
+            <h2 class="display-title">Let's build<br><em>something</em><br>together.</h2>
+            <p>Open to new opportunities, freelance projects, or just a conversation about .NET architecture.</p>
+            <button class="email-btn" id="emailCopy">
+              <i class="fas fa-envelope"></i>
+              <span id="emailText">maureenrubin21@gmail.com</span>
+              <span class="copy-tag">click to copy</span>
             </button>
-            <nav class="nav" id="nav">
-                <a href="#about"><i class="fas fa-user"></i> About</a>
-                <a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a>
-                <a href="#certificates"><i class="fas fa-certificate"></i> Certificates</a>
-                <a href="#stack"><i class="fas fa-cogs"></i> Tech Stack</a>
-                <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
-            </nav>
+          </div>
+          <div class="contact-right reveal">
+            <a href="https://www.linkedin.com/in/maureen-rubin-b35a3a31a/" target="_blank" class="clc">
+              <div class="clc-i"><i class="fab fa-linkedin"></i></div>
+              <div class="clc-t"><strong>LinkedIn</strong><span>Connect with me</span></div>
+              <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="https://github.com/maureenrubin" target="_blank" class="clc">
+              <div class="clc-i"><i class="fab fa-github"></i></div>
+              <div class="clc-t"><strong>GitHub</strong><span>Browse my code</span></div>
+              <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="https://www.upwork.com/freelancers/~01a54ce93ec2fdb005" target="_blank" class="clc">
+              <div class="clc-i"><i class="fas fa-briefcase"></i></div>
+              <div class="clc-t"><strong>UpWork</strong><span>Hire me</span></div>
+              <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <main id="content" class="main">
-        <div class="wrap">
-            <!-- Hero Section -->
-            <section class="profile-hero">
-                <div class="profile-content">
-                    <div class="profile-image-container">
-                        <img class="profile-image" src="https://github.com/maureenrubin.png" alt="Maureen Rubin - Software Developer">
-                        <div class="image-overlay">
-                            <i class="fas fa-play"></i>
-                        </div>
-                    </div>
+  </main>
 
-                    <div class="profile-info">
-                        <h1 class="profile-name">
-                            Maureen Rubin
-                            <span class="verified-badge">
-                                <i class="fas fa-badge-check"></i>
-                                Verified Developer
-                            </span>
-                        </h1>
-                        <div class="profile-role">.NET Software Developer</div>
-                        <div class="profile-location">
-                            <i class="fas fa-map-marker-alt"></i>
-                            Central Luzon, Philippines
-                        </div>
-                        <p class="profile-bio">
-                            Passionate C# Developer specializing in ASP.NET Core, Blazor, and Clean Architecture.
-                            Building scalable web applications with modern .NET technologies.
-                        </p>
-                    </div>
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <span class="f-name">Maureen <strong>Rubin</strong></span>
+      <span class="f-copy">© 2025 · Built with ♥ &amp; .NET</span>
+      <a href="https://github.com/maureenrubin" target="_blank" class="f-gh"><i class="fab fa-github"></i></a>
+    </div>
+  </footer>
 
-                    <div class="profile-actions">
-                        <div class="contact-links">
-                            <a href="https://www.linkedin.com/in/maureen-rubin-b35a3a31a/" class="contact-link linkedin" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="https://github.com/maureenrubin" class="contact-link github" target="_blank" rel="noreferrer" aria-label="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.upwork.com/freelancers/~01a54ce93ec2fdb005" class="contact-link upwork" target="_blank" rel="noreferrer" aria-label="UpWork">
-                                <i class="fas fa-briefcase"></i>
-                            </a>
-                        </div>
-                        <div class="status-badge">
-                            <div class="status-dot"></div>
-                            <span>Open to Work</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
+  <button class="btt" id="btt" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
 
-            <!-- Main Content -->
-            <div class="main-content">
-                <div class="content-grid">
-                    <!-- Primary Content -->
-                    <div class="primary-content">
-                        <!-- About -->
-                        <div class="card enhanced-card" id="about">
-                            <div class="card-header">
-                                <h2><i class="fas fa-user-circle"></i> About Me</h2>
-                            </div>
-                            <div class="about-content">
-                                <p>Experienced Software Developer with expertise in <strong>C#, ASP.NET Core, Blazor</strong>, and modern .NET development practices. I specialize in building scalable, maintainable web applications using Clean Architecture and SOLID principles.</p>
-                                <p>Currently exploring <strong>Angular</strong> and passionate about creating intuitive user experiences. I've contributed to real-world projects including tricycle fare management systems and university management platforms.</p>
-                                <div class="stats-grid">
-                                    <div class="stat-item">
-                                        <div class="stat-number">3+</div>
-                                        <div class="stat-label">Years Experience</div>
-                                    </div>
-                                    <div class="stat-item">
-                                        <div class="stat-number">15+</div>
-                                        <div class="stat-label">Projects Completed</div>
-                                    </div>
-                                    <div class="stat-item">
-                                        <div class="stat-number">2</div>
-                                        <div class="stat-label">Certificates</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Projects -->
-                        <div class="card enhanced-card" id="projects">
-                            <div class="card-header">
-                                <h2><i class="fas fa-project-diagram"></i> Featured Projects</h2>
-                                <a class="view-all" href="https://github.com/maureenrubin" target="_blank" rel="noreferrer">
-                                    <i class="fab fa-github"></i> View All on GitHub
-                                </a>
-                            </div>
-                            <div class="projects-grid">
-                                <article class="project-card">
-                                    <div class="project-image">
-                                        <img src="https://via.placeholder.com/400x250/5E0D68/FFFFFF?text=Election+System" alt="Students' Organization Election System">
-                                        <div class="project-overlay">
-                                            <a href="https://github.com/maureenrubin" target="_blank" class="project-link">
-                                                <i class="fas fa-external-link-alt"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="project-content">
-                                        <h3>Students' Organization Election & Events</h3>
-                                        <p>Digital voting platform for university student elections with event management and campus engagement features.</p>
-                                        <div class="project-tech">
-                                            <span class="tech-tag">ASP.NET Core</span>
-                                            <span class="tech-tag">Blazor</span>
-                                            <span class="tech-tag">SQL Server</span>
-                                        </div>
-                                        <a href="https://github.com/maureenrubin" class="project-repo" target="_blank" rel="noreferrer">
-                                            <i class="fab fa-github"></i> View Repository
-                                        </a>
-                                    </div>
-                                </article>
-
-                                <article class="project-card">
-                                    <div class="project-image">
-                                        <img src="https://via.placeholder.com/400x250/5E0D68/FFFFFF?text=Tricycle+Fare" alt="Tricycle Fare Management">
-                                        <div class="project-overlay">
-                                            <a href="https://github.com/maureenrubin/TricycleFareAndPassengerManagement" target="_blank" class="project-link">
-                                                <i class="fas fa-external-link-alt"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="project-content">
-                                        <h3>Tricycle Fare Management System</h3>
-                                        <p>Web-based system for managing passengers, trips, drivers with stats dashboard and map integration. <strong>Associate Developer</strong></p>
-                                        <div class="project-tech">
-                                            <span class="tech-tag">C#</span>
-                                            <span class="tech-tag">ASP.NET Core</span>
-                                            <span class="tech-tag">MSSQL</span>
-                                        </div>
-                                        <a href="https://github.com/maureenrubin/TricycleFareAndPassengerManagement" class="project-repo" target="_blank" rel="noreferrer">
-                                            <i class="fab fa-github"></i> View Repository
-                                        </a>
-                                    </div>
-                                </article>
-
-                                <article class="project-card">
-                                    <div class="project-image">
-                                        <img src="https://via.placeholder.com/400x250/5E0D68/FFFFFF?text=Library+System" alt="Library Management System">
-                                        <div class="project-overlay">
-                                            <a href="https://github.com/maureenrubin/Univ-Library-Management-System" target="_blank" class="project-link">
-                                                <i class="fas fa-external-link-alt"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="project-content">
-                                        <h3>University Library Management System</h3>
-                                        <p>Desktop application for efficient book cataloging, borrowing/returns tracking, and inventory management.</p>
-                                        <div class="project-tech">
-                                            <span class="tech-tag">C#</span>
-                                            <span class="tech-tag">WinForms</span>
-                                            <span class="tech-tag">SQL Server</span>
-                                        </div>
-                                        <a href="https://github.com/maureenrubin/Univ-Library-Management-System" class="project-repo" target="_blank" rel="noreferrer">
-                                            <i class="fab fa-github"></i> View Repository
-                                        </a>
-                                    </div>
-                                </article>
-
-                                <article class="project-card">
-                                    <div class="project-image">
-                                        <img src="https://via.placeholder.com/400x250/5E0D68/FFFFFF?text=POS+System" alt="Store POS System">
-                                        <div class="project-overlay">
-                                            <a href="https://github.com/maureenrubin/STORE-POS-Management-System" target="_blank" class="project-link">
-                                                <i class="fas fa-external-link-alt"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="project-content">
-                                        <h3>Store Point of Sale Management</h3>
-                                        <p>Complete desktop POS system for managing sales, inventory, and customer transactions efficiently.</p>
-                                        <div class="project-tech">
-                                            <span class="tech-tag">C#</span>
-                                            <span class="tech-tag">WinForms</span>
-                                            <span class="tech-tag">SQL Server</span>
-                                        </div>
-                                        <a href="https://github.com/maureenrubin/STORE-POS-Management-System" class="project-repo" target="_blank" rel="noreferrer">
-                                            <i class="fab fa-github"></i> View Repository
-                                        </a>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-
-                        <!-- Certificates -->
-                        <div class="card enhanced-card full-width" id="certificates">
-                            <div class="card-header">
-                                <h2><i class="fas fa-certificate"></i> Certificates</h2>
-                            </div>
-                            <div class="certificates-grid">
-                                <article class="certificate-card">
-                                    <div class="certificate-image">
-                                        <img src="images/freecodeCamp.png" alt="freeCodeCamp Foundational C# Certificate" loading="lazy">
-                                        <div class="certificate-overlay">
-                                            <i class="fas fa-search-plus"></i>
-                                        </div>
-                                    </div>
-                                    <div class="certificate-content">
-                                        <h3>Foundational C# with Microsoft</h3>
-                                        <p>freeCodeCamp Certificate</p>
-                                        <div class="certificate-date">Issued: 2024</div>
-                                    </div>
-                                    <div class="certificate-actions">
-                                        <a href="https://www.freecodecamp.org/certification/fcc16791d9a-fbef-4a8b-9b1f-3ebd2a5942cf/foundational-c-sharp-with-microsoft?trk=public_profile_see-credential"
-                                           class="certificate-link verify-btn" target="_blank" rel="noreferrer">
-                                            <i class="fas fa-external-link-alt"></i> Verify Certificate
-                                        </a>
-                                    </div>
-                                </article>
-
-                                <article class="certificate-card">
-                                    <div class="certificate-image">
-                                        <img src="images/hackerrank.png" alt="HackerRank Problem Solving Certificate" loading="lazy">
-                                        <div class="certificate-overlay">
-                                            <i class="fas fa-search-plus"></i>
-                                        </div>
-                                    </div>
-                                    <div class="certificate-content">
-                                        <h3>Problem Solving (Basic)</h3>
-                                        <p>HackerRank Skills Certification</p>
-                                        <div class="certificate-date">Issued: 2024</div>
-                                    </div>
-                                    <div class="certificate-actions">
-                                        <a href="https://www.hackerrank.com/certificates/363640ac08d3?trk=public_profile_see-credential"
-                                           class="certificate-link verify-btn" target="_blank" rel="noreferrer">
-                                            <i class="fas fa-external-link-alt"></i> Verify Certificate
-                                        </a>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sidebar -->
-                    <div class="sidebar-content">
-                        <div class="contact-card" id="contact">
-                            <div class="card-header">
-                                <h3><i class="fas fa-envelope"></i> Get In Touch</h3>
-                            </div>
-                            <div class="contact-content">
-                                <div class="contact-email">
-                                    <i class="fas fa-envelope"></i>
-                                    <a href="mailto:maureenrubin21@gmail.com">maureenrubin21@gmail.com</a>
-                                </div>
-                                <div class="social-links">
-                                    <a class="social-link linkedin" href="https://www.linkedin.com/in/maureen-rubin-b35a3a31a/" target="_blank" rel="noreferrer">
-                                        <i class="fab fa-linkedin"></i> LinkedIn
-                                    </a>
-                                    <a class="social-link github" href="https://github.com/maureenrubin" target="_blank" rel="noreferrer">
-                                        <i class="fab fa-github"></i> GitHub
-                                    </a>
-                                    <a class="social-link upwork" href="https://www.upwork.com/freelancers/~01a54ce93ec2fdb005" target="_blank" rel="noreferrer">
-                                        <i class="fas fa-briefcase"></i> UpWork
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card sidebar-card" id="stack">
-                            <div class="card-header">
-                                <h3><i class="fas fa-cogs"></i> Tech Stack</h3>
-                            </div>
-                            <div class="tech-grid">
-                                <div class="tech-item primary"><i class="fab fa-dotnet"></i> C#</div>
-                                <div class="tech-item primary"><i class="fas fa-globe"></i> ASP.NET Core</div>
-                                <div class="tech-item primary"><i class="fas fa-magic"></i> Blazor</div>
-                                <div class="tech-item"><i class="fas fa-database"></i> SQL Server</div>
-                                <div class="tech-item"><i class="fas fa-cubes"></i> EF Core</div>
-                                <div class="tech-item"><i class="fas fa-layer-group"></i> Clean Arch</div>
-                                <div class="tech-item"><i class="fas fa-exchange-alt"></i> MVC</div>
-                                <div class="tech-item"><i class="fas fa-project-diagram"></i> CQRS</div>
-                                <div class="tech-item"><i class="fas fa-code-branch"></i> Git</div>
-                                <div class="tech-item"><i class="fab fa-html5"></i> HTML/CSS</div>
-                                <div class="tech-item"><i class="fab fa-bootstrap"></i> Bootstrap</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <footer class="site-footer">
-        <div class="wrap">
-            <div class="footer-content">
-                <div>© 2025 Maureen Rubin. Built with ❤️ and .NET</div>
-                <div class="footer-links">
-                    <a href="https://github.com/maureenrubin" target="_blank" rel="noreferrer">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+  <div class="cursor" id="cursor"></div>
+  <script src="script.js"></script>
 </body>
 </html>
