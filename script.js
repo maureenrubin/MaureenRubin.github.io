@@ -1,21 +1,28 @@
-/* ══════════════════════════════════════════════
-   MAUREEN RUBIN — Portfolio  ·  script.js
-══════════════════════════════════════════════ */
+/* ═══════════════════════════════════════
+   main.js — Maureen Rubin Portfolio
+   BULLETPROOF REVEAL FOR GITHUB PAGES:
+   - .js-loaded added to body first so CSS
+     only hides elements when JS is running
+   - Without JS: everything is always visible
+   - Hard 800ms fallback shows all remaining
+     hidden elements — no black sections ever
+═══════════════════════════════════════ */
 
-/* ── Navbar: scroll + dark-section detection ── */
-const navbar       = document.getElementById('navbar');
-const btt          = document.getElementById('btt');
-const DARK_IDS     = ['projects', 'stack', 'contact'];
+/* ── Step 1: Signal CSS that JS is active ── */
+document.body.classList.add('js-loaded');
+
+/* ── Scroll / Navbar ── */
+const navbar = document.getElementById('navbar');
+const btt    = document.getElementById('btt');
+const DARK_SECTIONS = ['projects', 'stack', 'contact'];
 
 function updateNav() {
   const y = window.scrollY;
-
   navbar.classList.toggle('scrolled', y > 60);
   btt.classList.toggle('show', y > 500);
 
-  // Switch to dark style when a dark section fills the top area
   let isDark = false;
-  DARK_IDS.forEach(id => {
+  DARK_SECTIONS.forEach(id => {
     const el = document.getElementById(id);
     if (!el) return;
     const r = el.getBoundingClientRect();
@@ -23,127 +30,163 @@ function updateNav() {
   });
   navbar.classList.toggle('dark-nav', isDark);
 }
-
 window.addEventListener('scroll', updateNav, { passive: true });
 updateNav();
 
-/* ── Burger / Mobile menu ── */
+/* ── Burger ── */
 const burger     = document.getElementById('burger');
 const mobOverlay = document.getElementById('mobOverlay');
 let menuOpen = false;
 
 function toggleMenu(force) {
-  menuOpen = (force !== undefined) ? force : !menuOpen;
+  menuOpen = force !== undefined ? force : !menuOpen;
   mobOverlay.classList.toggle('open', menuOpen);
   document.body.style.overflow = menuOpen ? 'hidden' : '';
-
   const [s1, s2] = burger.querySelectorAll('span');
   if (menuOpen) {
-    s1.style.transform = 'rotate(45deg) translate(5px, 5px)';
-    s2.style.transform = 'rotate(-45deg) translate(4px, -4px)';
+    s1.style.transform = 'rotate(45deg) translate(5px,5px)';
+    s2.style.transform = 'rotate(-45deg) translate(4px,-4px)';
   } else {
-    s1.style.transform = '';
-    s2.style.transform = '';
+    s1.style.transform = s2.style.transform = '';
   }
 }
-
 burger.addEventListener('click', () => toggleMenu());
 mobOverlay.querySelectorAll('a').forEach(a =>
   a.addEventListener('click', () => toggleMenu(false))
 );
 
-/* ── Smooth scroll for anchor links ── */
+/* ── Smooth scroll ── */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (!target) return;
+    const t = document.querySelector(a.getAttribute('href'));
+    if (!t) return;
     e.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+/* ══════════════════════════════════════════
+   REVEAL SYSTEM — GITHUB PAGES SAFE
+══════════════════════════════════════════ */
+
+function showEl(el, delay) {
+  if (!delay || delay <= 0) {
+    el.classList.add('in');
+  } else {
+    setTimeout(() => el.classList.add('in'), delay);
+  }
+}
+
+function isInViewport(el) {
+  const r = el.getBoundingClientRect();
+  return r.top < window.innerHeight && r.bottom > 0;
+}
+
+const allRevealEls     = Array.from(document.querySelectorAll('.reveal, .reveal-left'));
+const heroRevealEls    = allRevealEls.filter(el => el.closest('#hero'));
+const nonHeroRevealEls = allRevealEls.filter(el => !el.closest('#hero'));
+
+// Immediately reveal anything already on screen
+nonHeroRevealEls.forEach((el, i) => {
+  if (isInViewport(el)) showEl(el, i * 50);
+});
+
+// Observer for the rest
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const parent   = entry.target.parentElement;
+    const siblings = Array.from(parent.querySelectorAll('.reveal, .reveal-left'));
+    const idx      = Math.max(0, siblings.indexOf(entry.target));
+    showEl(entry.target, Math.min(idx * 70, 280));
+    revealObserver.unobserve(entry.target);
+  });
+}, {
+  threshold: 0.05,
+  rootMargin: '0px 0px -20px 0px'
+});
+
+nonHeroRevealEls.forEach(el => {
+  if (!el.classList.contains('in')) revealObserver.observe(el);
+});
+
+/* ── HARD FALLBACK (800ms) ─────────────────
+   Force show everything not yet revealed.
+   This is the final safety net against
+   black sections on GitHub Pages.
+─────────────────────────────────────────── */
+setTimeout(() => {
+  allRevealEls.forEach(el => {
+    if (!el.classList.contains('in')) el.classList.add('in');
+  });
+}, 800);
+
+/* ── Hero entrance on load ── */
+window.addEventListener('load', () => {
+  heroRevealEls.forEach((el, i) => {
+    setTimeout(() => el.classList.add('in'), 180 + i * 110);
+  });
+  nonHeroRevealEls.forEach(el => {
+    if (!el.classList.contains('in') && isInViewport(el)) {
+      el.classList.add('in');
+    }
   });
 });
 
-btt.addEventListener('click', () =>
-  window.scrollTo({ top: 0, behavior: 'smooth' })
-);
-
-/* ── Scroll reveal ── */
-const revealObs = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-
-    const parent = entry.target.parentElement;
-    const siblings = [...parent.querySelectorAll('.reveal, .reveal-left')];
-    const idx = siblings.indexOf(entry.target);
-
-    setTimeout(() => entry.target.classList.add('in'), idx * 65);
-    revealObs.unobserve(entry.target);
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-document.querySelectorAll('.reveal, .reveal-left').forEach(el => revealObs.observe(el));
-
-/* ── Skills bars ── */
-const skillsSection = document.querySelector('.skills');
-if (skillsSection) {
-  new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting) {
-      skillsSection.querySelectorAll('.sk-fill').forEach(bar => bar.classList.add('go'));
+/* ══════════════════════════════════════════
+   SKILLS BAR ANIMATION
+══════════════════════════════════════════ */
+const skillsEl = document.querySelector('.skills');
+if (skillsEl) {
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) {
+      skillsEl.querySelectorAll('.sk-fill').forEach(b => b.classList.add('go'));
     }
-  }, { threshold: 0.4 }).observe(skillsSection);
+  }, { threshold: 0.3 }).observe(skillsEl);
 }
 
-/* ── Stat counters ── */
+/* ══════════════════════════════════════════
+   COUNTER ANIMATION
+══════════════════════════════════════════ */
 function runCounters() {
   document.querySelectorAll('.snum[data-target]').forEach(el => {
     const target = parseInt(el.dataset.target, 10);
-    let current = 0;
+    let cur = 0;
     const step = Math.max(1, Math.ceil(target / 30));
-
     const timer = setInterval(() => {
-      current = Math.min(current + step, target);
-      el.textContent = current;
-      if (current >= target) clearInterval(timer);
+      cur = Math.min(cur + step, target);
+      el.textContent = cur;
+      if (cur >= target) clearInterval(timer);
     }, 40);
   });
 }
 
-const statRow = document.querySelector('.stat-row');
-if (statRow) {
-  new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting) runCounters();
-  }, { threshold: 0.5 }).observe(statRow);
+const statsEl = document.querySelector('.stat-row');
+if (statsEl) {
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) runCounters();
+  }, { threshold: 0.4 }).observe(statsEl);
 }
 
-/* ── Active nav links on section enter ── */
-document.querySelectorAll('section[id]').forEach(sec => {
-  new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting) {
+/* ══════════════════════════════════════════
+   ACTIVE NAV LINKS
+══════════════════════════════════════════ */
+document.querySelectorAll('section[id]').forEach(s => {
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) {
       document.querySelectorAll('.nav-links a').forEach(a =>
-        a.classList.toggle('active', a.getAttribute('href') === '#' + sec.id)
+        a.classList.toggle('active', a.getAttribute('href') === '#' + s.id)
       );
     }
-  }, { rootMargin: '-38% 0px -55% 0px' }).observe(sec);
+  }, { rootMargin: '-38% 0px -55% 0px' }).observe(s);
 });
 
-/* ── Work row icon tilt on hover ── */
-document.querySelectorAll('.work-row').forEach(row => {
-  row.addEventListener('mousemove', e => {
-    const icon = row.querySelector('.wr-icon');
-    if (!icon) return;
-    const rect = row.getBoundingClientRect();
-    const cx   = ((e.clientX - rect.left) / rect.width - 0.5) * 12;
-    icon.style.transform = `scale(1.1) rotate(${cx}deg)`;
-  });
-  row.addEventListener('mouseleave', () => {
-    const icon = row.querySelector('.wr-icon');
-    if (icon) icon.style.transform = '';
-  });
-});
-
-/* ── Email copy ── */
+/* ══════════════════════════════════════════
+   EMAIL COPY
+══════════════════════════════════════════ */
 const emailCopy = document.getElementById('emailCopy');
 const emailText = document.getElementById('emailText');
-
 if (emailCopy) {
   emailCopy.addEventListener('click', async () => {
     try {
@@ -160,10 +203,19 @@ if (emailCopy) {
   });
 }
 
-/* ── Kick hero reveals above the fold ── */
-window.addEventListener('load', () => {
-  const heroItems = document.querySelectorAll('.hero .reveal, .hero .reveal-left');
-  heroItems.forEach((el, i) => {
-    setTimeout(() => el.classList.add('in'), 180 + i * 110);
+/* ══════════════════════════════════════════
+   WORK ROW TILT
+══════════════════════════════════════════ */
+document.querySelectorAll('.work-row').forEach(row => {
+  row.addEventListener('mousemove', e => {
+    const icon = row.querySelector('.wr-icon');
+    if (!icon) return;
+    const r  = row.getBoundingClientRect();
+    const cx = ((e.clientX - r.left) / r.width - 0.5) * 10;
+    icon.style.transform = `scale(1.1) rotate(${cx}deg)`;
+  });
+  row.addEventListener('mouseleave', () => {
+    const icon = row.querySelector('.wr-icon');
+    if (icon) icon.style.transform = '';
   });
 });

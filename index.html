@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
@@ -5,10 +6,9 @@
   <title>Maureen Rubin — .NET Software Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
 <!-- ── NAVBAR ── -->
@@ -51,32 +51,32 @@
 ════════════════════════════════ -->
 <section class="hero" id="hero">
   <div class="hero-left">
-    <div class="hero-eyebrow">
+    <div class="hero-eyebrow reveal">
       <span class="live-dot"></span>
-      Available for work &nbsp;·&nbsp; Philippines
+      Available for work &nbsp;·&nbsp; Philippines and Overseas Remote 
     </div>
 
-    <h1 class="hero-name">
+    <h1 class="hero-name reveal">
       <span class="first">Maureen</span>
       <span class="last">Rubin</span>
     </h1>
 
-    <div class="hero-role">
+    <div class="hero-role reveal">
       <i class="fas fa-terminal" style="color:var(--accent);font-size:11px"></i>
       .NET Software Developer
     </div>
 
-    <p class="hero-sub">
-      C# · ASP.NET Core · Blazor · Clean Architecture.<br>
-      Building things that actually work — cleanly and at scale.
+    <p class="hero-sub reveal">
+      Desktop Applications · Enterprise Systems · Web Development.<br>
+      Built with Clean Architecture — scalable, maintainable, and designed to last.
     </p>
 
-    <div class="hero-actions">
+    <div class="hero-actions reveal">
       <a href="#projects" class="btn-solid">See My Work &nbsp;<i class="fas fa-arrow-right"></i></a>
       <a href="#contact" class="btn-ghost">Get In Touch</a>
     </div>
 
-    <div class="hero-socials">
+    <div class="hero-socials reveal">
       <a href="https://github.com/maureenrubin" target="_blank"><i class="fab fa-github"></i></a>
       <a href="https://www.linkedin.com/in/maureen-rubin-b35a3a31a/" target="_blank"><i class="fab fa-linkedin"></i></a>
       <a href="https://www.upwork.com/freelancers/~01a54ce93ec2fdb005" target="_blank"><i class="fas fa-briefcase"></i></a>
@@ -84,12 +84,12 @@
   </div>
 
   <div class="hero-right">
-    <div class="photo-wrap">
+    <div class="photo-wrap reveal">
       <img src="https://github.com/maureenrubin.png" alt="Maureen Rubin" class="hero-photo">
       <div class="photo-badge"><i class="fas fa-check" style="margin-right:5px"></i>Verified Dev</div>
     </div>
 
-    <div class="stat-row">
+    <div class="stat-row reveal">
       <div class="stat-box">
         <div><span class="snum" data-target="2">0</span><span class="ssym">+</span></div>
         <span class="slbl">Years Exp.</span>
@@ -121,7 +121,7 @@
   <div class="wrap">
     <div class="sec-label reveal">01 · About Me</div>
     <div class="about-grid">
-      <div class="about-left reveal-left">
+      <div class="reveal-left">
         <div class="h-rule"></div>
         <h2 class="display-title" style="margin-bottom:24px">Building the web,<br><em>one commit</em><br>at a time.</h2>
         <p class="about-sub">"Clean code is not written by following rules. Clean code is written by someone who cares."</p>
@@ -265,7 +265,9 @@
       <div class="tc reveal"><div class="tc-i"><i class="fas fa-project-diagram"></i></div><span>CQRS</span></div>
       <div class="tc reveal"><div class="tc-i"><i class="fas fa-code-branch"></i></div><span>Git</span></div>
       <div class="tc reveal"><div class="tc-i"><i class="fab fa-html5"></i></div><span>HTML / CSS</span></div>
-      <div class="tc reveal"><div class="tc-i"><i class="fab fa-bootstrap"></i></div><span>Bootstrap</span></div>
+      <div class="tc reveal"><div class="tc-i"><i class="fab fa-desktop"></i></div><span>WFA</span></div>
+      <div class="tc reveal"><div class="tc-i"><i class="fab fa-file-code"></i></div><span>VBA</span></div>
+
       <div class="tc learning reveal">
         <div class="tc-i"><i class="fab fa-angular"></i></div>
         <span>Angular<span class="lrn-tag">learning</span></span>
@@ -328,4 +330,10 @@
     <a href="https://github.com/maureenrubin" target="_blank" class="f-gh"><i class="fab fa-github"></i></a>
   </div>
 </footer>
+
 <button class="btt" id="btt" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+<!-- JS loaded at end of body so DOM is ready -->
+<script src="js/main.js"></script>
+</body>
+</html>
