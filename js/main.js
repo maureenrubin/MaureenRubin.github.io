@@ -92,9 +92,10 @@ btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth'
 const phrases = [
   'const dev = "Maureen Rubin";',
   'using CleanArchitecture;',
+  'Console.WriteLine("Hire Me! :)");',
   'new DotNetDeveloper();',
   'git commit -m "Initial portfolio"',
-  'Console.WriteLine("Hello, Hire Me!");',
+  'Console.WriteLine("Hello pipol who visits my Portfolio!");',
 ];
 let pIdx = 0, cIdx = 0, deleting = false;
 const typedEl = document.getElementById('typedText');
