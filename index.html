@@ -1,41 +1,70 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Maureen Rubin — .NET Software Developer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-<!-- ── NAVBAR ── -->
+<!-- Cursor glow -->
+<div id="cursor-glow"></div>
+
+<!-- Animated grid background -->
+<div class="hero-grid" aria-hidden="true">
+  <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+        <path d="M 60 0 L 0 0 0 60" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
+      </pattern>
+      <linearGradient id="gridFade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.15"/>
+        <stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#grid)" stroke="var(--accent)"/>
+    <rect width="100%" height="100%" fill="url(#gridFade)"/>
+  </svg>
+</div>
+
+<!-- ══════════════
+     NAVBAR
+══════════════ -->
 <header class="nav" id="navbar">
   <div class="nav-inner">
-    <a href="#hero" class="nav-logo">Maureen <span>Rubin</span></a>
+    <a href="#hero" class="nav-logo">
+      <span class="prompt">&gt;_</span>maureen<span class="accent">.rubin</span>
+    </a>
     <nav class="nav-links" id="navLinks">
-      <a href="#about">About</a>
-      <a href="#projects">Work</a>
-      <a href="#certificates">Certs</a>
-      <a href="#stack">Stack</a>
-      <a href="#contact" class="nav-cta-link">Contact</a>
+      <a href="#about">about</a>
+      <a href="#projects">work</a>
+      <a href="#certificates">certs</a>
+      <a href="#stack">stack</a>
+      <a href="#contact">contact</a>
     </nav>
-    <button class="burger" id="burger" aria-label="Menu">
-      <span></span><span></span>
-    </button>
+    <div class="nav-right">
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+        <i class="fas fa-moon" id="themeIcon"></i>
+      </button>
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
 
 <!-- Mobile overlay -->
 <div class="mob-overlay" id="mobOverlay">
   <div class="mob-links">
-    <a href="#about">About</a>
-    <a href="#projects">Work</a>
-    <a href="#certificates">Certs</a>
-    <a href="#stack">Stack</a>
-    <a href="#contact">Contact</a>
+    <a href="#about">about</a>
+    <a href="#projects">work</a>
+    <a href="#certificates">certs</a>
+    <a href="#stack">stack</a>
+    <a href="#contact">contact</a>
   </div>
   <div class="mob-socials">
     <a href="https://github.com/maureenrubin" target="_blank"><i class="fab fa-github"></i></a>
@@ -46,14 +75,18 @@
 
 <main>
 
-<!-- ════════════════════════════════
-     HERO  —  light
-════════════════════════════════ -->
+<!-- ══════════════
+     HERO
+══════════════ -->
 <section class="hero" id="hero">
   <div class="hero-left">
     <div class="hero-eyebrow reveal">
       <span class="live-dot"></span>
-      Available for work &nbsp;·&nbsp; Philippines and Overseas Remote 
+      Available for work &nbsp;·&nbsp; Philippines &amp; Overseas Remote
+    </div>
+
+    <div class="typed-wrap reveal" id="typedWrap">
+      <span id="typedText"></span><span class="typed-cursor"></span>
     </div>
 
     <h1 class="hero-name reveal">
@@ -62,8 +95,7 @@
     </h1>
 
     <div class="hero-role reveal">
-      <i class="fas fa-terminal" style="color:var(--accent);font-size:11px"></i>
-      .NET Software Developer
+      <span class="sym">&#123;</span> .NET Software Developer <span class="sym">&#125;</span>
     </div>
 
     <p class="hero-sub reveal">
@@ -72,35 +104,36 @@
     </p>
 
     <div class="hero-actions reveal">
-      <a href="#projects" class="btn-solid">See My Work &nbsp;<i class="fas fa-arrow-right"></i></a>
+      <a href="#projects" class="btn-primary">See My Work &nbsp;<i class="fas fa-arrow-right"></i></a>
       <a href="#contact" class="btn-ghost">Get In Touch</a>
     </div>
 
     <div class="hero-socials reveal">
-      <a href="https://github.com/maureenrubin" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/maureen-rubin-b35a3a31a/" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://www.upwork.com/freelancers/~01a54ce93ec2fdb005" target="_blank"><i class="fas fa-briefcase"></i></a>
+      <a href="https://github.com/maureenrubin" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/maureen-rubin-b35a3a31a/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.upwork.com/freelancers/~01a54ce93ec2fdb005" target="_blank" title="UpWork"><i class="fas fa-briefcase"></i></a>
     </div>
   </div>
 
   <div class="hero-right">
     <div class="photo-wrap reveal">
+      <div class="photo-ring"></div>
       <img src="https://github.com/maureenrubin.png" alt="Maureen Rubin" class="hero-photo">
-      <div class="photo-badge"><i class="fas fa-check" style="margin-right:5px"></i>Verified Dev</div>
+      <div class="photo-badge"><i class="fas fa-check" style="margin-right:4px"></i>Verified Dev</div>
     </div>
 
     <div class="stat-row reveal">
       <div class="stat-box">
         <div><span class="snum" data-target="2">0</span><span class="ssym">+</span></div>
-        <span class="slbl">Years Exp.</span>
+        <span class="slbl">Yrs Exp.</span>
       </div>
       <div class="stat-box">
-        <div><span class="snum" data-target="15">0</span><span class="ssym">+</span></div>
+        <div><span class="snum" data-target="10">0</span><span class="ssym">+</span></div>
         <span class="slbl">Projects</span>
       </div>
       <div class="stat-box">
         <div><span class="snum" data-target="2">0</span></div>
-        <span class="slbl">Certificates</span>
+        <span class="slbl">Certs</span>
       </div>
     </div>
   </div>
@@ -111,64 +144,69 @@
   </div>
 </section>
 
-<!-- Gradient divider: light → light-2 -->
-<div class="sec-divider" style="background:linear-gradient(to bottom,var(--cream),var(--cream2))"></div>
+<div class="sec-sep"></div>
 
-<!-- ════════════════════════════════
-     ABOUT  —  light
-════════════════════════════════ -->
-<section class="sec sec-light" id="about">
+<!-- ══════════════
+     ABOUT
+══════════════ -->
+<section class="sec" id="about">
   <div class="wrap">
-    <div class="sec-label reveal">01 · About Me</div>
+    <div class="sec-label reveal">01 · about_me</div>
     <div class="about-grid">
-      <div class="reveal-left">
-        <div class="h-rule"></div>
-        <h2 class="display-title" style="margin-bottom:24px">Building the web,<br><em>one commit</em><br>at a time.</h2>
-        <p class="about-sub">"Clean code is not written by following rules. Clean code is written by someone who cares."</p>
+      <div>
+        <div class="reveal-left">
+          <h2 class="display-title" style="margin-bottom:20px">
+            Building the web,<br><em>one commit</em><br>at a time.
+          </h2>
+          <p class="about-quote">
+            "Clean code is not written by following rules.<br>
+            Clean code is written by someone who cares."
+          </p>
+        </div>
       </div>
 
       <div class="about-right">
         <p class="reveal">Experienced developer with deep expertise in <strong>C#, ASP.NET Core, Blazor</strong>, and modern .NET practices. I build scalable, maintainable applications using Clean Architecture and SOLID principles.</p>
         <p class="reveal">Currently exploring <strong>Angular</strong> and passionate about creating intuitive user experiences. Based in <strong>Central Luzon, Philippines</strong> — available for remote collaboration worldwide.</p>
         <div class="skills reveal">
-          <div class="sk-row"><label>C# / .NET</label><div class="sk-bar"><div class="sk-fill" style="--p:95"></div></div><span>90%</span></div>
+          <div class="sk-row"><label>C# / .NET</label><div class="sk-bar"><div class="sk-fill" style="--p:95"></div></div><span>95%</span></div>
           <div class="sk-row"><label>ASP.NET Core / Blazor</label><div class="sk-bar"><div class="sk-fill" style="--p:90"></div></div><span>90%</span></div>
           <div class="sk-row"><label>SQL Server / EF Core</label><div class="sk-bar"><div class="sk-fill" style="--p:85"></div></div><span>85%</span></div>
-          <div class="sk-row"><label>Clean Architecture</label><div class="sk-bar"><div class="sk-fill" style="--p:88"></div></div><span>80%</span></div>
-          <div class="sk-row"><label>HTML / CSS</label><div class="sk-bar"><div class="sk-fill" style="--p:80"></div></div><span>95%</span></div>
+          <div class="sk-row"><label>Clean Architecture</label><div class="sk-bar"><div class="sk-fill" style="--p:88"></div></div><span>88%</span></div>
+          <div class="sk-row"><label>HTML / CSS / JS</label><div class="sk-bar"><div class="sk-fill" style="--p:80"></div></div><span>80%</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Gradient divider: light → dark -->
-<div class="sec-divider to-dark"></div>
+<div class="sec-sep"></div>
 
-<!-- ════════════════════════════════
-     PROJECTS  —  dark
-════════════════════════════════ -->
-<section class="sec sec-dark" id="projects">
+<!-- ══════════════
+     PROJECTS
+══════════════ -->
+<section class="sec" id="projects">
   <div class="wrap">
-    <div class="sec-label dk reveal">02 · Work</div>
+    <div class="sec-label reveal">02 · featured_work</div>
     <div class="work-header">
-      <h2 class="display-title light reveal" style="margin-bottom:0">Featured<br><em>Projects.</em></h2>
+      <h2 class="display-title reveal" style="margin-bottom:0">Featured<br><em>Projects.</em></h2>
       <a href="https://github.com/maureenrubin" target="_blank" class="gh-link reveal"><i class="fab fa-github"></i> All Repos</a>
     </div>
 
     <div class="work-list">
-      <article class="work-row reveal">
+
+        <article class="work-row reveal">
         <div class="wr-num">01</div>
-        <div class="wr-icon" style="--c:#c084fc"><i class="fas fa-vote-yea"></i></div>
+        <div class="wr-icon" style="--c:#fb923c"><i class="fas fa-file-excel"></i></div>
         <div class="wr-body">
-          <div class="wr-tags"><span>ASP.NET Core</span><span>Blazor</span><span>SQL Server</span></div>
-          <h3>Students' Organization Election &amp; Events</h3>
-          <p>Digital voting platform for university student elections with event management and campus engagement.</p>
+          <div class="wr-tags"><span>VBA</span><span>EXCEL</span></div>
+          <h3>Column Content Validation</h3>
+          <p>VBA project validates user-inputted data in an Excel sheet against a set of predefined column rules<em></em> Developer.</em></p>
         </div>
-        <a href="https://www.linkedin.com/in/maureen-rubin-b35a3a31a/" target="_blank" class="wr-link"><i class="fas fa-arrow-up-right-from-square"></i></a>
+        <a href="https://github.com/maureenrubin/ColumnContentValidation" target="_blank" class="wr-link"><i class="fas fa-arrow-up-right-from-square"></i></a>
       </article>
 
-      <article class="work-row reveal">
+     <article class="work-row reveal">
         <div class="wr-num">02</div>
         <div class="wr-icon" style="--c:#60a5fa"><i class="fas fa-taxi"></i></div>
         <div class="wr-body">
@@ -176,11 +214,22 @@
           <h3>Tricycle Fare Management System</h3>
           <p>Web system for managing passengers, trips and drivers with stats dashboard and map integration. <em>Associate Developer.</em></p>
         </div>
-        <a href="https://www.linkedin.com/in/maureen-rubin-b35a3a31a/" target="_blank" class="wr-link"><i class="fas fa-arrow-up-right-from-square"></i></a>
+        <a href="https://github.com/maureenrubin/Tricycle-Fare-And-Passenger-Management" target="_blank" class="wr-link"><i class="fas fa-arrow-up-right-from-square"></i></a>
       </article>
 
       <article class="work-row reveal">
         <div class="wr-num">03</div>
+        <div class="wr-icon" style="--c:#c084fc"><i class="fas fa-vote-yea"></i></div>
+        <div class="wr-body">
+          <div class="wr-tags"><span>ASP.NET Core</span><span>Blazor</span><span>SQL Server</span></div>
+          <h3>Students' Organization Election &amp; Events</h3>
+          <p>Digital voting platform for university student elections with event management and campus engagement.</p>
+        </div>
+        <a href="https://github.com/maureenrubin?tab=repositories" target="_blank" class="wr-link"><i class="fas fa-arrow-up-right-from-square"></i></a>
+      </article>
+
+      <article class="work-row reveal">
+        <div class="wr-num">04</div>
         <div class="wr-icon" style="--c:#4ade80"><i class="fas fa-book-open"></i></div>
         <div class="wr-body">
           <div class="wr-tags"><span>C#</span><span>WinForms</span><span>SQL Server</span></div>
@@ -190,29 +239,19 @@
         <a href="https://github.com/maureenrubin/Univ-Library-Management-System" target="_blank" class="wr-link"><i class="fas fa-arrow-up-right-from-square"></i></a>
       </article>
 
-      <article class="work-row reveal">
-        <div class="wr-num">04</div>
-        <div class="wr-icon" style="--c:#fb923c"><i class="fas fa-cash-register"></i></div>
-        <div class="wr-body">
-          <div class="wr-tags"><span>C#</span><span>WinForms</span><span>SQL Server</span></div>
-          <h3>Store Point of Sale Management</h3>
-          <p>Complete desktop POS system for managing sales, inventory, and customer transactions.</p>
-        </div>
-        <a href="https://github.com/maureenrubin/STORE-POS-Management-System" target="_blank" class="wr-link"><i class="fas fa-arrow-up-right-from-square"></i></a>
-      </article>
+    
     </div>
   </div>
 </section>
 
-<!-- Gradient divider: dark → light -->
-<div class="sec-divider to-light"></div>
+<div class="sec-sep"></div>
 
-<!-- ════════════════════════════════
-     CERTIFICATES  —  light/beige
-════════════════════════════════ -->
-<section class="sec sec-light" id="certificates">
+<!-- ══════════════
+     CERTIFICATES
+══════════════ -->
+<section class="sec" id="certificates">
   <div class="wrap">
-    <div class="sec-label reveal">03 · Credentials</div>
+    <div class="sec-label reveal">03 · credentials</div>
     <h2 class="display-title reveal">Certificates.</h2>
     <div class="certs-grid">
       <article class="cert-card reveal">
@@ -244,16 +283,15 @@
   </div>
 </section>
 
-<!-- Gradient divider: light → dark2 -->
-<div class="sec-divider" style="background:linear-gradient(to bottom,var(--cream2),var(--dk-bg2))"></div>
+<div class="sec-sep"></div>
 
-<!-- ════════════════════════════════
-     STACK  —  dark
-════════════════════════════════ -->
-<section class="sec sec-dark2" id="stack">
+<!-- ══════════════
+     STACK
+══════════════ -->
+<section class="sec" id="stack">
   <div class="wrap">
-    <div class="sec-label dk reveal">04 · Stack</div>
-    <h2 class="display-title light reveal">Tools &amp;<br><em>Technologies.</em></h2>
+    <div class="sec-label reveal">04 · tools_and_tech</div>
+    <h2 class="display-title reveal">Tools &amp;<br><em>Technologies.</em></h2>
     <div class="tech-grid">
       <div class="tc primary reveal"><div class="tc-i"><i class="fab fa-microsoft"></i></div><span>C#</span></div>
       <div class="tc primary reveal"><div class="tc-i"><i class="fas fa-globe"></i></div><span>ASP.NET Core</span></div>
@@ -265,9 +303,8 @@
       <div class="tc reveal"><div class="tc-i"><i class="fas fa-project-diagram"></i></div><span>CQRS</span></div>
       <div class="tc reveal"><div class="tc-i"><i class="fas fa-code-branch"></i></div><span>Git</span></div>
       <div class="tc reveal"><div class="tc-i"><i class="fab fa-html5"></i></div><span>HTML / CSS</span></div>
-      <div class="tc reveal"><div class="tc-i"><i class="fab fa-desktop"></i></div><span>WFA</span></div>
-      <div class="tc reveal"><div class="tc-i"><i class="fab fa-file-code"></i></div><span>VBA</span></div>
-
+      <div class="tc reveal"><div class="tc-i"><i class="fas fa-desktop"></i></div><span>WinForms</span></div>
+      <div class="tc reveal"><div class="tc-i"><i class="fas fa-file-code"></i></div><span>VBA</span></div>
       <div class="tc learning reveal">
         <div class="tc-i"><i class="fab fa-angular"></i></div>
         <span>Angular<span class="lrn-tag">learning</span></span>
@@ -276,19 +313,17 @@
   </div>
 </section>
 
-<!-- Gradient divider: dark2 → dark -->
-<div class="sec-divider" style="background:linear-gradient(to bottom,var(--dk-bg2),var(--dk-bg))"></div>
+<div class="sec-sep"></div>
 
-<!-- ════════════════════════════════
-     CONTACT  —  dark
-════════════════════════════════ -->
-<section class="sec sec-dark" id="contact">
+<!-- ══════════════
+     CONTACT
+══════════════ -->
+<section class="sec" id="contact">
   <div class="wrap">
-    <div class="sec-label dk reveal">05 · Contact</div>
+    <div class="sec-label reveal">05 · contact</div>
     <div class="contact-grid">
       <div class="contact-left">
-        <div class="h-rule" style="background:var(--accent2)"></div>
-        <h2 class="display-title light reveal">Let's build<br><em>something</em><br>together.</h2>
+        <h2 class="display-title reveal">Let's build<br><em>something</em><br>together.</h2>
         <p class="reveal">Open to new opportunities, freelance projects, or just a conversation about .NET architecture.</p>
         <button class="email-btn reveal" id="emailCopy">
           <i class="fas fa-envelope"></i>
@@ -320,12 +355,12 @@
 
 </main>
 
-<!-- ════════════════════════════════
-     FOOTER  —  dark
-════════════════════════════════ -->
+<!-- ══════════════
+     FOOTER
+══════════════ -->
 <footer class="footer">
   <div class="wrap footer-inner">
-    <span class="f-name">Maureen <strong>Rubin</strong></span>
+    <span class="f-name">&gt;_ maureen <strong>rubin</strong></span>
     <span class="f-copy">© 2025 · Built with care &amp; .NET</span>
     <a href="https://github.com/maureenrubin" target="_blank" class="f-gh"><i class="fab fa-github"></i></a>
   </div>
@@ -333,7 +368,6 @@
 
 <button class="btt" id="btt" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
 
-<!-- JS loaded at end of body so DOM is ready -->
 <script src="js/main.js"></script>
 </body>
 </html>
